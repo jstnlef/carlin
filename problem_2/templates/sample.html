@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Problem 2 Sample Rendering</title>
+</head>
+<body>
+    <div>
+        <p>id: {{id}}</p>
+        <p>name: {{name}}</p>
+        <p>active: {{active}}</p>
+        <p>count: {{count}}</p>
+        <p>address_ids: {{address_ids}}</p>
+        <p>accounts:
+            <ul>{% for account in accounts %}
+                <li>
+                    <p>id: {{account.id}}</p>
+                    <p>name: {{account.name}}</p>
+                </li>{% endfor %}
+            </ul>
+        </p>
+    </div>
+</body>
+</html>

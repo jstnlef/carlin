@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template
 from marshmallow import Schema, fields
 
 app = Flask(__name__)
@@ -18,9 +18,10 @@ class SampleSchema(Schema):
     accounts = fields.Nested(AccountSchema, required=True, many=True)
 
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+@app.route('/samples', methods=['POST'])
+def sample_handler():
+    parsed = SampleSchema().load(request.json)
+    return render_template('sample.html', **parsed.data)
 
 
 if __name__ == "__main__":
